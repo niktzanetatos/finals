@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">F1QUIZGAME</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="displayname">displayname</string>
+    <string name="already_have_an_account_sign_in">Already have an account? Sign in</string>
+    <string name="f1_quiz_game">F1 QUIZ GAME</string>
+    <string name="signup">SIGNUP</string>
+    <string name="email2">email</string>
+    <string name="f1_quiz_game2">F1 QUIZ GAME</string>
+</resources>
