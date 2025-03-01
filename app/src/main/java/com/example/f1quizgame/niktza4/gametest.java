@@ -478,12 +478,10 @@ public class gametest extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 View main = findViewById(R.id.main2);
                 if (!snapshot.exists() || main.getVisibility() != View.VISIBLE) return;
-
                 Boolean senderHasJoined = snapshot.child("senderHasJoined").getValue(Boolean.class);
                 Boolean receiverHasJoined = snapshot.child("recieverHasJoined").getValue(Boolean.class);
                 Integer score1 = snapshot.child("score1").getValue(Integer.class);
                 Integer score2 = snapshot.child("score2").getValue(Integer.class);
-
                 if (Boolean.FALSE.equals(senderHasJoined) || Boolean.FALSE.equals(receiverHasJoined)) {
                     showGameOverScreen(score1 != null ? score1 : 0, score2 != null ? score2 : 0);
                 }

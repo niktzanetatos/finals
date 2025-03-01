@@ -438,4 +438,13 @@ public class Main extends AppCompatActivity {
            }
        });
    }
+    public  void signOut(View view) {
+        database.child("users").child(userId).child("online").setValue(false)
+                .addOnCompleteListener(task -> {
+                    auth.signOut();
+                    startActivity(new Intent(Main.this, MainActivity.class));
+                    finish();
+                });
+    }
+
 }
