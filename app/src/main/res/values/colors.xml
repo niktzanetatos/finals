@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="button_red">#FF0000</color>
+    <color name="win_green">#2ECC71</color>
+    <color name="lose_red">#E74C3C</color>
+    <color name="purple_background">#6A1B9A</color>
+    <color name="gold">#FFD700</color>
+    <color name="background_soft">#F5F5F7</color>
+    <color name="card_lavender">#E6E6FA</color>
+    <color name="button_dark">#2E2E2E</color>
+    <color name="text_light">#FAFAFA</color>
+    <color name="accent_gold">#D4AF37</color>
+    <color name="header_plum">#4B0082</color>
+
+    <color name="button_background">#3F3D56</color>
+    <color name="button_pressed">#5A5670</color>
+    <color name="button_text">#FFFFFF</color>
+    <color name="gold2">#D4AF37</color>
+    <color name="gold_light">#40D4AF37</color>
+    <color name="button_pressed2">#1A3F3D56</color>
+
+    <color name="card_background">#5D3A9B</color>
+    <color name="card_text">#FFD700</color>
+
+    <color name="screen_background">#F5F3F0</color> <!-- soft ivory/eggshell -->
+    <color name="overlay_background">#4B0082</color> <!-- optional deeper plum for overlays -->
+
+    <color name="dot_inactive">#D3CFE2</color> <!-- for inactive dots -->
+    <color name="dot_active">#FFD700</color> <!-- gold for active dots -->
+    <color name="game_bg_gradient_start">#1E3D56</color>
+    <color name="game_bg_gradient_end">#0F1C2E</color>
+    <color name="answer_button_bg">#1AFFFFFF</color>
+    <color name="answer_button_ripple">#40D4AF37</color>
+    <color name="result_bg">#CC1E3D56</color>
+    <color name="difficulty_bg">#CC3F3D56</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="green">#4CAF50</color>
+    <color name="yellow">#FFC107</color>
+    <color name="red">#F44336</color>
 
 </resources>

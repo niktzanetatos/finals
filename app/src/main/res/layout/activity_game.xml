@@ -2,293 +2,409 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main2"
+    android:id="@+id/main4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/f1game4"
+    android:background="@drawable/game_background_gradient"
     android:visibility="invisible"
     tools:context=".game"
     tools:visibility="visible">
 
-    <Button
-        android:id="@+id/a"
-        android:layout_width="197dp"
-        android:layout_height="72dp"
-        android:backgroundTint="@color/white"
-        android:onClick="scorep1"
-        android:text="Button"
-        android:textColor="@color/black"
+    <!-- Decorative elements -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/resultLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:cardBackgroundColor="@color/result_bg"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:ignore="OnClick" />
+        tools:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="714dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp">
+
+            <TextView
+                android:id="@+id/resultTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/averia_gruesa_libre"
+                android:text="VICTORY!"
+                android:textColor="@color/accent_gold"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/scoreTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/averia_gruesa_libre"
+                android:text="Score: 1200"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/returnButton"
+                style="@style/GameMenuButton"
+                android:layout_marginTop="32dp"
+                android:text="Return to Main Menu"
+                app:icon="@drawable/ic_home" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/decor_top_left"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_corner_decor"
+        android:tint="#20D4AF37"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseAppTint" />
+
+    <ImageView
+        android:id="@+id/decor_bottom_right"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:rotation="180"
+        android:src="@drawable/ic_corner_decor"
+        android:tint="#20D4AF37"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="UseAppTint" />
+
+    <!-- Player info headers -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/player1Card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#20FFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/vsText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/averia_gruesa_libre"
+                android:gravity="center"
+                android:text="Player 1"
+                android:textColor="@color/accent_gold"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/senderDotsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/senderDot1"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/senderDot2"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/senderDot3"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/senderDot4"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/senderDot5"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/senderDot6"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/vsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/averia_gruesa_libre"
-        android:text="TextView"
-        android:textColor="#FDFBFB"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.050000012" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/averia_gruesa_libre"
-        android:text="TextView"
-        android:textColor="#FDFBFB"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.050000012" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="57dp"
-        android:layout_height="90dp"
         android:fontFamily="@font/bungee_shade"
         android:text="VS"
         android:textColor="@color/button_red"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="353dp"
-        android:layout_height="192dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19999999"
-        app:srcCompat="@drawable/edit_text_round" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="257dp"
-        android:layout_height="145dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/averia_gruesa_libre"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.595"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <Button
-        android:id="@+id/b"
-        android:layout_width="194dp"
-        android:layout_height="74dp"
-        android:backgroundTint="@color/white"
-        android:text="Button"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/a"
-        app:layout_constraintVertical_bias="0.136" />
-
-    <Button
-        android:id="@+id/c"
-        android:layout_width="198dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="37dp"
-        android:backgroundTint="@color/white"
-        android:text="Button"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b"
-        app:layout_constraintVertical_bias="0.009" />
-
-    <LinearLayout
-        android:id="@+id/resultLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:visibility="gone"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-25dp">
-
-        <TextView
-            android:id="@+id/resultTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="16dp"
-            android:text="Result"
-            android:textColor="#000000"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/scoreTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="32dp"
-            android:text="Score"
-            android:textColor="#000000"
-            android:textSize="22sp" />
-
-        <Button
-            android:id="@+id/returnButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@color/black"
-            android:padding="12dp"
-            android:text="Return to Main Menu"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/senderDotsContainer"
-        android:layout_width="126dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="28dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView6">
-
-        <View
-            android:id="@+id/senderDot1"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/senderDot2"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/senderDot3"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/senderDot4"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/senderDot5"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/senderDot6"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/receiverDotsContainer"
-        android:layout_width="132dp"
-        android:layout_height="26dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/resultLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.0">
-
-        <View
-            android:id="@+id/receiverDot1"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/receiverDot2"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/receiverDot3"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/receiverDot4"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/receiverDot5"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/receiverDot6"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_margin="4dp"
-            android:background="@android:color/darker_gray" />
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/timerProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="374dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="304dp"
-        android:max="15000"
-        android:progress="15000"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/player2Card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#20FFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/vsText"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/averia_gruesa_libre"
+                android:gravity="center"
+                android:text="Player 2"
+                android:textColor="@color/accent_gold"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/receiverDotsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/receiverDot1"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/receiverDot2"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/receiverDot3"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/receiverDot4"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/receiverDot5"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+                <View
+                    android:id="@+id/receiverDot6"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/dot_inactive" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Question card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/questionCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardBackgroundColor="#30FFFFFF"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player1Card">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:fontFamily="@font/averia_gruesa_libre"
+            android:gravity="center"
+            android:text="Question text goes here"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Answers container -->
+    <LinearLayout
+        android:id="@+id/answersContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionCard">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/answerA"
+            style="@style/GameAnswerButton"
+            android:layout_marginBottom="12dp"
+            android:text="Answer A">
+
+        </com.google.android.material.button.MaterialButton>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/answerB"
+            style="@style/GameAnswerButton"
+            android:layout_marginBottom="12dp"
+            android:text="Answer B" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/answerC"
+            style="@style/GameAnswerButton"
+            android:layout_marginBottom="12dp"
+            android:text="Answer C" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/answerD"
+            style="@style/GameAnswerButton"
+            android:layout_marginBottom="12dp"
+            android:text="Answer D" />
+
+        <!-- Repeat for answerB, answerC, answerD -->
+    </LinearLayout>
+
+    <!-- Result overlay -->
+
+    <!-- Difficulty overlay -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/difficultyOverlayCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/difficulty_bg"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp">
+
+            <ImageView
+                android:id="@+id/categoryImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="24dp"
+                android:tint="@color/accent_gold"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                android:id="@+id/difficultyOverlayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/averia_gruesa_libre"
+                android:text="SCIENCE"
+                android:textColor="@color/accent_gold"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/questionTimer"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:max="100"
+        android:progress="100"
+        android:progressBackgroundTint="@color/black"
+        android:progressTint="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/timerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="3dp"
+        android:text="10"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/questionTimer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionCard"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,98 +2,209 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main2"
+    android:id="@+id/main4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ptyxiakh_background1"
+    android:background="@drawable/main_background_gradient"
     tools:context=".Main">
 
+    <!-- Background decorative elements -->
+
+
+
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="92dp"
-        android:layout_height="49dp"
-        android:clickable="true"
-        android:onClick="showOnline"
+        android:id="@+id/decor_top_right"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_decorative_pattern"
+        android:tint="#40D4AF37"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseAppTint" />
+
+    <ImageView
+        android:id="@+id/decor_bottom_left"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_decorative_pattern"
+        android:tint="#20D4AF37"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UseAppTint" />
+
+    <!-- Title at the top with improved styling -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.05"
+        android:text="QUIZ SHOWDOWN"
+        android:textColor="#D4AF37"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Notification icon with badge -->
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="54dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:drawableLeft="@drawable/notification_icon_gold"
+        android:drawableRight="@drawable/red_circle_badge"
+        android:drawablePadding="4dp"
+        android:onClick="seeInvites"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Back button with improved styling -->
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/circle_button_bg"
+        android:onClick="signOut"
+        android:padding="12dp"
+        android:tint="#D4AF37"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92"
-        app:srcCompat="@drawable/f1helmet" />
+        app:srcCompat="@drawable/baseline_arrow_back_24"
+        tools:ignore="UseAppTint" />
+
+    <!-- Main action buttons with improved styling -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="#1AFFFFFF"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- History Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/historyButton"
+                style="@style/GameMenuButton"
+                android:layout_marginBottom="16dp"
+                android:text="History"
+                app:icon="@drawable/ic_history2"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/gold" />
+
+            <!-- Survival Mode Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/carousel"
+                style="@style/GameMenuButton"
+                android:layout_marginBottom="16dp"
+                android:onClick="startSinglePlayerGame"
+                android:text="Survival Mode"
+                app:icon="@drawable/ic_survival2"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/gold" />
+
+            <!-- Online Friends Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/historyButton2"
+                style="@style/GameMenuButton"
+                android:layout_marginBottom="16dp"
+                android:onClick="showOnline"
+                android:text="Online Friends"
+                app:icon="@drawable/ic_online"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/gold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/profile"
+                style="@style/GameMenuButton"
+                android:layout_marginBottom="16dp"
+                android:onClick="seeProfile"
+                android:text="My profile"
+                app:icon="@drawable/ic_survival2"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/gold" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/LeaderboardButton"
+                style="@style/GameMenuButton"
+                android:layout_marginBottom="16dp"
+                android:text="Leaderboard"
+                app:icon="@drawable/ic_history2"
+                android:onClick="seeLeaderboard"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/gold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/StatisticsButton"
+                style="@style/GameMenuButton"
+                android:layout_marginBottom="16dp"
+                android:onClick="seeStatistics"
+                android:text="Statistics"
+                app:icon="@drawable/ic_history2"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/gold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Bottom decorative element -->
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/ic_trophy2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="#30D4AF37" />
 
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="375dp"
-        android:layout_height="359dp"
+        android:layout_height="400dp"
+        android:background="@drawable/scrollview_background"
         android:visibility="invisible"
+        android:elevation="12dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.505"
+        app:layout_constraintVertical_bias="0.967"
         tools:visibility="invisible">
 
         <LinearLayout
             android:id="@+id/linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </LinearLayout>
+            android:orientation="vertical"
+            android:layout_margin="8dp" />
     </ScrollView>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="169dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showonline"
-        android:text="Online Friends"
-        android:textColor="@color/button_red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.009"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="54dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="36dp"
-        android:drawableLeft="@drawable/notification"
-        android:drawableRight="@drawable/red_circle"
-        android:onClick="seeInvites"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="73dp"
-        android:layout_height="59dp"
-        android:onClick="signOut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.983"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934"
-        app:srcCompat="@drawable/baseline_arrow_back_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Diamond pattern -->
+    <path
+        android:fillColor="#10D4AF37"
+        android:pathData="M50,0 L100,50 L50,100 L0,50 Z
+    M20,20 L50,50 L20,80 L-10,50 Z
+    M80,20 L50,50 L80,80 L110,50 Z
+    M20,50 L50,80 L20,110 L-10,80 Z
+    M80,50 L50,80 L80,110 L110,80 Z"
+        android:strokeWidth="0.5"
+        android:strokeColor="#20D4AF37" />
+</vector>

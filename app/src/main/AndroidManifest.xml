@@ -13,6 +13,24 @@
         android:theme="@style/Theme.F1QUIZGAME"
         tools:targetApi="31">
         <activity
+            android:name=".Statistics"
+            android:exported="false" />
+        <activity
+            android:name=".Leaderboard"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".FlagGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SingleGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".History"
+            android:exported="false" />
+        <activity
             android:name=".gametest"
             android:exported="false" />
         <activity

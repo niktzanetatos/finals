@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_flags_game"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/game_background_gradient"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Player Names at Top - Improved with better spacing and visual hierarchy -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="24dp"
+        android:background="#33000000"
+        android:padding="12dp"
+        android:elevation="4dp">
+
+        <TextView
+            android:id="@+id/textViewSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player 1"
+            android:textColor="#FFD700"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" vs "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"/>
+
+        <TextView
+            android:id="@+id/textViewReceiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player 2"
+            android:textColor="#FFD700"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+    </LinearLayout>
+
+    <!-- Flag Image (Centered) - Added subtle elevation and border effect -->
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="32dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="8dp"
+        android:background="#FFFFFF"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/flagImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Flag Image"
+            android:scaleType="centerCrop"
+            android:visibility="invisible" />
+
+        <View
+            android:id="@+id/flagReveal"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:background="@android:color/white"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <!-- Answer Input - Improved styling -->
+    <EditText
+        android:id="@+id/answerInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="#33000000"
+        android:hint="Enter country name..."
+        android:inputType="textCapWords"
+        android:padding="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCFFFFFF"
+        android:textSize="18sp"
+        android:elevation="4dp"
+        android:outlineAmbientShadowColor="#FFD700"
+        android:outlineSpotShadowColor="#FFD700" />
+
+    <!-- Submit Button - More prominent button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        style="@style/GameAnswerButton"
+        android:elevation="8dp"
+        android:padding="16dp"
+        android:text="SUBMIT"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="#FF5722"
+        android:letterSpacing="0.1"/>
+</LinearLayout>

@@ -2,24 +2,30 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main2"
+    android:id="@+id/main4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ptyxiakh_background"
+    android:background="@drawable/main_background_gradient"
     tools:context=".MainActivity">
+    <ImageView
+        android:id="@+id/decor_top_right"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_decorative_pattern"
+        android:tint="#40D4AF37"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseAppTint" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="250dp"
-        android:layout_height="129dp"
-        android:visibility="visible"
+        android:id="@+id/decor_bottom_left"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_decorative_pattern"
+        android:tint="#20D4AF37"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintVertical_bias="0.227"
-        app:srcCompat="@drawable/file" />
+        tools:ignore="UseAppTint" />
 
     <EditText
         android:id="@+id/editTextText"
@@ -27,7 +33,7 @@
         android:layout_height="37dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="304dp"
-        android:background="@drawable/edit_text_round"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/baseline_alternate_email_24"
         android:drawablePadding="15px"
         android:ems="10"
@@ -70,9 +76,10 @@
         android:id="@+id/button"
         android:layout_width="135dp"
         android:layout_height="40dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/button_pressed"
         android:onClick="signUp"
         android:text="@string/signup"
+        style="@style/GameMenuButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,16 +87,17 @@
         app:layout_constraintVertical_bias="0.803" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/hammersmith_one"
-        android:text="@string/f1_quiz_game"
-        android:textSize="40sp"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.05"
+        android:text="QUIZ SHOWDOWN"
+        android:textColor="#D4AF37"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,6 +108,7 @@
         android:layout_marginBottom="100dp"
         android:onClick="goTosignIn"
         android:text="@string/already_have_an_account_sign_in"
+        android:textColor="@color/accent_gold"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
