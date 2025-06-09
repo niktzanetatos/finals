@@ -335,11 +335,13 @@ public class SingleGameActivity extends AppCompatActivity {
 
                 @Override
                 public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
-                    // Optional: log ή debug
                 }
             });
 
         }
+        helper5050.setVisibility(View.INVISIBLE);
+        helperAudience.setVisibility(View.INVISIBLE);
+        helperEinstein.setVisibility(View.INVISIBLE);
         gameOverOverlay.setVisibility(View.VISIBLE);
         gameOverOverlay.setAlpha(0f);
         gameOverOverlay.animate().alpha(1f).setDuration(2500).start();
