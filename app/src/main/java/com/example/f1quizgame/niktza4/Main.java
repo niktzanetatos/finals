@@ -11,8 +11,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -22,7 +20,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -66,7 +63,7 @@ public class Main extends AppCompatActivity {
         if (auth.getCurrentUser() != null) {
             userId = auth.getCurrentUser().getUid();
         } else {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, Signin_up.class));
             finish();
             return;
         }
@@ -109,7 +106,7 @@ public class Main extends AppCompatActivity {
         if (scrollView.getVisibility() == View.INVISIBLE) {
             onlineUsersLayout.removeAllViews();
 
-            // Enhanced background with subtle gradient
+
             GradientDrawable backgroundGradient = new GradientDrawable(
                     GradientDrawable.Orientation.TOP_BOTTOM,
                     new int[]{Color.parseColor("#1a1a1a"), Color.parseColor("#0d0d0d")}
@@ -118,13 +115,13 @@ public class Main extends AppCompatActivity {
             onlineUsersLayout.setBackground(backgroundGradient);
             onlineUsersLayout.setPadding(20, 16, 20, 20);
 
-            // Enhanced header with better styling
+
             LinearLayout headerLayout = new LinearLayout(Main.this);
             headerLayout.setOrientation(LinearLayout.HORIZONTAL);
             headerLayout.setGravity(Gravity.CENTER);
             headerLayout.setPadding(0, 16, 0, 20);
 
-            // Online indicator dot
+
             View onlineDot = new View(Main.this);
             GradientDrawable dotDrawable = new GradientDrawable();
             dotDrawable.setShape(GradientDrawable.OVAL);
@@ -145,7 +142,7 @@ public class Main extends AppCompatActivity {
             headerLayout.addView(onlineDot);
             headerLayout.addView(headerTextView);
 
-            // Subtle divider line
+
             View divider = new View(Main.this);
             GradientDrawable dividerDrawable = new GradientDrawable(
                     GradientDrawable.Orientation.LEFT_RIGHT,
@@ -182,11 +179,10 @@ public class Main extends AppCompatActivity {
                             String receiverId = userSnapshot.getKey();
 
                             if (displayName != null) {
-                                // Enhanced user card with modern design
+
                                 LinearLayout userCard = new LinearLayout(Main.this);
                                 userCard.setOrientation(LinearLayout.VERTICAL);
 
-                                // Card background with elevation effect
                                 GradientDrawable cardBackground = new GradientDrawable();
                                 cardBackground.setColor(Color.parseColor("#262626"));
                                 cardBackground.setCornerRadius(16f);
@@ -202,13 +198,13 @@ public class Main extends AppCompatActivity {
                                 userCard.setLayoutParams(cardParams);
                                 userCard.setPadding(20, 16, 20, 16);
 
-                                // User info section
+
                                 LinearLayout userInfoLayout = new LinearLayout(Main.this);
                                 userInfoLayout.setOrientation(LinearLayout.HORIZONTAL);
                                 userInfoLayout.setGravity(Gravity.CENTER_VERTICAL);
                                 userInfoLayout.setPadding(0, 0, 0, 12);
 
-                                // Avatar placeholder with gradient
+
                                 TextView avatarView = new TextView(Main.this);
                                 avatarView.setText(displayName.substring(0, 1).toUpperCase());
                                 avatarView.setTextSize(16);
@@ -227,14 +223,12 @@ public class Main extends AppCompatActivity {
                                 avatarParams.setMargins(0, 0, 16, 0);
                                 avatarView.setLayoutParams(avatarParams);
 
-                                // User info text layout
                                 LinearLayout textLayout = new LinearLayout(Main.this);
                                 textLayout.setOrientation(LinearLayout.VERTICAL);
                                 LinearLayout.LayoutParams textLayoutParams = new LinearLayout.LayoutParams(
                                         0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
                                 textLayout.setLayoutParams(textLayoutParams);
 
-                                // Username
                                 TextView userTextView = new TextView(Main.this);
                                 userTextView.setText(displayName);
                                 userTextView.setTextSize(16);
@@ -242,7 +236,7 @@ public class Main extends AppCompatActivity {
                                 userTextView.setTextColor(Color.parseColor("#ffffff"));
                                 userTextView.setOnClickListener(v -> seeProfile(receiverId));
 
-                                // Online status
+
                                 TextView statusTextView = new TextView(Main.this);
                                 statusTextView.setText("• Online now");
                                 statusTextView.setTextSize(12);
@@ -255,20 +249,17 @@ public class Main extends AppCompatActivity {
                                 userInfoLayout.addView(avatarView);
                                 userInfoLayout.addView(textLayout);
 
-                                // Enhanced buttons section
                                 LinearLayout buttonLayout = new LinearLayout(Main.this);
                                 buttonLayout.setOrientation(LinearLayout.HORIZONTAL);
                                 buttonLayout.setGravity(Gravity.CENTER);
 
-                                // General Button with modern styling
                                 Button generalButton = createStyledButton("General", Color.parseColor("#4285f4"));
                                 generalButton.setOnClickListener(v -> sendInvitation(receiverId));
 
-                                // Flags Button with modern styling
+
                                 Button flagsButton = createStyledButton("Flags", Color.parseColor("#ea4335"));
                                 flagsButton.setOnClickListener(v -> sendFlagInvitation(receiverId));
 
-                                // Add spacing between buttons
                                 LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
                                         0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
                                 buttonParams.setMargins(4, 0, 4, 0);
@@ -282,7 +273,6 @@ public class Main extends AppCompatActivity {
                             }
                         }
 
-                        // Enhanced empty state
                         if (onlineUsersLayout.getChildCount() == 2) {
                             addEmptyState(onlineUsersLayout, "No other players are currently online",
                                     "Check back later to see who's available to play!");
@@ -317,14 +307,12 @@ public class Main extends AppCompatActivity {
         button.setAllCaps(false);
         button.setPadding(24, 12, 24, 12);
 
-        // Create gradient background
         GradientDrawable buttonBg = new GradientDrawable();
         buttonBg.setColor(color);
         buttonBg.setCornerRadius(20f);
         button.setBackground(buttonBg);
         button.setElevation(2f);
 
-        // Add ripple effect for API 21+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             button.setStateListAnimator(null);
         }
@@ -509,11 +497,9 @@ public class Main extends AppCompatActivity {
         if (scrollView.getVisibility() == View.INVISIBLE) {
             pendingInvitesLayout.removeAllViews();
 
-            // Clean, minimal background
             pendingInvitesLayout.setBackgroundColor(Color.parseColor("#1e1e1e"));
             pendingInvitesLayout.setPadding(24, 20, 24, 24);
 
-            // Simple, clean header
             TextView headerTextView = new TextView(Main.this);
             headerTextView.setText("Invitations");
             headerTextView.setTextSize(24);
@@ -530,7 +516,6 @@ public class Main extends AppCompatActivity {
             invitesRef.orderByChild("receiverId").equalTo(currentUserId).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    // Remove existing invite items (keep header)
                     int childCount = pendingInvitesLayout.getChildCount();
                     if (childCount > 1) {
                         pendingInvitesLayout.removeViews(1, childCount - 1);
@@ -551,14 +536,12 @@ public class Main extends AppCompatActivity {
                                         String senderName = senderSnapshot.child("displayName").getValue(String.class);
                                         if (senderName == null) senderName = "Unknown User";
 
-                                        // Clean invitation row
                                         LinearLayout inviteRow = new LinearLayout(Main.this);
                                         inviteRow.setOrientation(LinearLayout.HORIZONTAL);
                                         inviteRow.setGravity(Gravity.CENTER_VERTICAL);
                                         inviteRow.setPadding(20, 20, 20, 20);
                                         inviteRow.setBackgroundColor(Color.parseColor("#2a2a2a"));
 
-                                        // Subtle rounded corners
                                         GradientDrawable rowBackground = new GradientDrawable();
                                         rowBackground.setColor(Color.parseColor("#2a2a2a"));
                                         rowBackground.setCornerRadius(12f);
@@ -571,7 +554,6 @@ public class Main extends AppCompatActivity {
                                         rowParams.setMargins(0, 0, 0, 16);
                                         inviteRow.setLayoutParams(rowParams);
 
-                                        // Left side - Player info
                                         LinearLayout playerInfo = new LinearLayout(Main.this);
                                         playerInfo.setOrientation(LinearLayout.VERTICAL);
                                         LinearLayout.LayoutParams playerInfoParams = new LinearLayout.LayoutParams(
@@ -593,12 +575,10 @@ public class Main extends AppCompatActivity {
                                         playerInfo.addView(playerName);
                                         playerInfo.addView(gameInfo);
 
-                                        // Right side - Action buttons
                                         LinearLayout buttonContainer = new LinearLayout(Main.this);
                                         buttonContainer.setOrientation(LinearLayout.HORIZONTAL);
                                         buttonContainer.setGravity(Gravity.CENTER_VERTICAL);
 
-                                        // Accept button - clean green
                                         Button acceptButton = new Button(Main.this);
                                         acceptButton.setText("✓");
                                         acceptButton.setTextSize(18);
@@ -622,8 +602,6 @@ public class Main extends AppCompatActivity {
                                                     .addOnSuccessListener(aVoid -> {
                                                         Toast.makeText(Main.this, "Invitation accepted!", Toast.LENGTH_SHORT).show();
                                                         pendingInvitesLayout.removeView(inviteRow);
-
-                                                        // Game joining logic (same as before)
                                                         DatabaseReference gamesRef = FirebaseDatabase.getInstance().getReference(
                                                                 "Flags".equalsIgnoreCase(gameType) ? "flagGames" : "games");
 
@@ -686,7 +664,6 @@ public class Main extends AppCompatActivity {
                                                     });
                                         });
 
-                                        // Decline button - clean red
                                         Button declineButton = new Button(Main.this);
                                         declineButton.setText("✕");
                                         declineButton.setTextSize(16);
@@ -901,7 +878,7 @@ public class Main extends AppCompatActivity {
         database.child("users").child(userId).child("online").setValue(false)
                 .addOnCompleteListener(task -> {
                     auth.signOut();
-                    startActivity(new Intent(Main.this, MainActivity.class));
+                    startActivity(new Intent(Main.this, Signin_up.class));
                     finish();
                 });
     }
@@ -1004,7 +981,7 @@ public class Main extends AppCompatActivity {
                                     invitationData.put("senderId", senderId);
                                     invitationData.put("receiverId", receiverId);
                                     invitationData.put("status", "pending");
-                                    invitationData.put("type", "Flags"); // Changed to "Flags" for flag games
+                                    invitationData.put("type", "Flags");
 
                                     if (invitationId != null) {
                                         invitesRef.child(invitationId).setValue(invitationData)
@@ -1020,7 +997,6 @@ public class Main extends AppCompatActivity {
                                                                         String status = snapshot.getValue(String.class);
                                                                         if ("accepted".equals(status)) {
                                                                             joinFlagsGame(senderId, receiverId);
-                                                                            // Remove invitation (cleanup)
                                                                             invitesRef.child(invitationId).removeValue();
                                                                         } else if ("declined".equals(status)) {
                                                                             Toast.makeText(Main.this, "Flag game invitation was declined.", Toast.LENGTH_SHORT).show();
@@ -1181,7 +1157,6 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
 
     }
-
 
 
 }

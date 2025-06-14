@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_background_gradient"
-    tools:context=".MainActivity">
+    tools:context=".Signin_up">
     <ImageView
         android:id="@+id/decor_top_right"
         android:layout_width="150dp"
@@ -86,6 +86,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.803" />
 
+    <Button
+        android:id="@+id/signin"
+        style="@style/GameMenuButton"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/button_pressed"
+        android:onClick="signIn"
+        android:text="sign in"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.803" />
+
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -110,6 +125,22 @@
         android:text="@string/already_have_an_account_sign_in"
         android:textColor="@color/accent_gold"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:clickable="true"
+        android:onClick="goTosignUp"
+        android:text="Dont have an account?Sign up!"
+        android:textColor="@color/accent_gold"
+        android:textSize="20sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

@@ -3,7 +3,9 @@ package com.example.f1quizgame.niktza4;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -30,17 +32,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class Signin_up extends AppCompatActivity {
     EditText emailText, passwordText, nameText;
     FirebaseAuth auth;
     FirebaseUser user;
     DatabaseReference database;
+    TextView gotosignin,gotosignup;
+
+    Button signup,signin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_signin_up);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main4), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -49,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
         emailText = findViewById(R.id.editTextText);
         passwordText = findViewById(R.id.editTextText2);
         nameText = findViewById(R.id.editTextText3);
+        signup=findViewById(R.id.button);
+        signin=findViewById(R.id.signin);
+        gotosignup=findViewById(R.id.textView);
+        gotosignin=findViewById(R.id.textView2);
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance().getReference();
     }
@@ -94,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                                     String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
                                     database.child("users").child(userId).child("date").setValue(currentDate);
                                     database.child("users").child(userId).child("online").onDisconnect().setValue(false);
-                                    Intent intent = new Intent(MainActivity.this, Main.class);
+                                    Intent intent = new Intent(Signin_up.this, Main.class);
                                     intent.putExtra("displayName", displayName);
                                     startActivity(intent);
                                 }
@@ -113,7 +122,56 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goTosignIn(View view) {
-        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-        startActivity(intent);
+    signup.setVisibility(View.INVISIBLE);
+    nameText.setVisibility(View.INVISIBLE);
+    signin.setVisibility(View.VISIBLE);
+    gotosignin.setVisibility(View.VISIBLE);
+    gotosignup.setVisibility(View.INVISIBLE);
+    }
+    public void goTosignUp(View view) {
+        signup.setVisibility(View.VISIBLE);
+        nameText.setVisibility(View.VISIBLE);
+        signin.setVisibility(View.INVISIBLE);
+        gotosignin.setVisibility(View.INVISIBLE);
+        gotosignup.setVisibility(View.VISIBLE);
+    }
+
+
+
+    public void signIn(View view) {
+        if (!emailText.getText().toString().isEmpty() && !passwordText.getText().toString().isEmpty()) {
+            auth.signInWithEmailAndPassword(emailText.getText().toString(), passwordText.getText().toString())
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                user = auth.getCurrentUser();
+                                if (user != null) {
+                                    String userId = user.getUid();
+                                    database.child("users").child(userId).child("online").setValue(true);
+                                    database.child("users").child(userId).child("online").onDisconnect().setValue(false);
+                                    database.child("users").child(userId).child("displayName")
+                                            .get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                                    if (task.isSuccessful() && task.getResult().exists()) {
+                                                        String displayName = task.getResult().getValue(String.class);
+                                                        Intent intent = new Intent(Signin_up.this, Main.class);
+                                                        intent.putExtra("displayName", displayName);
+                                                        startActivity(intent);
+                                                    } else {
+                                                        showMessage("Error", "Display name not found in the database.");
+                                                    }
+                                                }
+                                            });
+                                }
+                            } else {
+                                showMessage("Error", task.getException().getLocalizedMessage());
+                            }
+                        }
+                    });
+        } else {
+            showMessage("Error", "Please provide data to the fields");
+        }
     }
 }
